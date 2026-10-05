@@ -1439,12 +1439,42 @@ body{
 }
 
 
-/* v48 MOBILE EXPLORATION + LOG READABILITY */
+/* =========================================================
+   v48 MOBILE EXPLORATION + LOG READABILITY
+   ========================================================= */
 .exploreLogTitle{min-width:0}
-.logToggle{flex:0 0 auto;min-height:32px;padding:5px 9px;font-size:10px;border:1px solid #42515b;background:#0d151b;color:#cbd8de}
-.log>div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;margin:0!important;padding:7px 4px;border-bottom:1px solid rgba(95,112,123,.18)}
+.logToggle{
+  flex:0 0 auto;
+  min-height:32px;
+  padding:5px 9px;
+  font-size:10px;
+  border:1px solid #42515b;
+  background:#0d151b;
+  color:#cbd8de;
+}
+.log>div{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:8px;
+  align-items:start;
+  margin:0!important;
+  padding:7px 4px;
+  border-bottom:1px solid rgba(95,112,123,.18);
+}
 .log>div:first-child{padding-top:3px}
-.logDay{display:inline-flex;align-items:center;justify-content:center;min-width:34px;padding:2px 5px;border:1px solid #33434c;background:#0f171d;color:#9baab1;font-size:9px;line-height:1.25;font-weight:800}
+.logDay{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:34px;
+  padding:2px 5px;
+  border:1px solid #33434c;
+  background:#0f171d;
+  color:#9baab1;
+  font-size:9px;
+  line-height:1.25;
+  font-weight:800;
+}
 .logText{min-width:0;overflow-wrap:anywhere}
 .log .good .logDay{border-color:rgba(114,239,156,.45);color:var(--green)}
 .log .bad .logDay{border-color:rgba(255,93,135,.5);color:var(--red)}
@@ -1453,37 +1483,115 @@ body{
 .exploreLogPanel.expanded .log{height:min(52dvh,460px)!important}
 
 @media (max-width:760px){
+  /* Keep the exploration screen where the player is after an action. */
   #tab-explore{overflow-anchor:auto}
   .exploreLeft,.exploreRight,.mapWrap,.detail,.exploreLogPanel{overflow-anchor:auto}
-  .phase{padding:6px!important;margin-bottom:7px!important;border-left-width:3px!important}
-  .quickGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:4px!important}
-  .quickItem{padding:5px 6px!important;font-size:9.5px!important;line-height:1.35!important}
-  .quickItem b{display:block;margin-bottom:2px;font-size:9px!important;color:#9fb0b8}
+
+  /* Make the daily situation compact so the map appears sooner. */
+  .phase{
+    padding:6px!important;
+    margin-bottom:7px!important;
+    border-left-width:3px!important;
+  }
+  .quickGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:4px!important;
+  }
+  .quickItem{
+    padding:5px 6px!important;
+    font-size:9.5px!important;
+    line-height:1.35!important;
+  }
+  .quickItem b{
+    display:block;
+    margin-bottom:2px;
+    font-size:9px!important;
+    color:#9fb0b8;
+  }
   .quickItem:last-child{grid-column:1/-1}
   .quickItem small{font-size:8px!important}
+
+  /* Larger map labels without changing the 7x7 footprint. */
   .map{gap:3px!important}
   .tile{font-size:9px!important;padding:2px 1px!important}
   .tile .nm{font-size:8.5px!important;line-height:1.05!important}
   .ico svg{width:min(26px,100%)!important;height:min(26px,100%)!important}
-  .tile.selected{outline:2px solid #72ef9c!important;outline-offset:-1px;box-shadow:0 0 0 2px rgba(114,239,156,.12),0 0 16px rgba(114,239,156,.16)!important}
-  .detail{margin-top:2px!important;padding:10px!important;font-size:12px!important;line-height:1.55!important;border-color:#344650!important}
+  .tile.selected{
+    outline:2px solid #72ef9c!important;
+    outline-offset:-1px;
+    box-shadow:0 0 0 2px rgba(114,239,156,.12),0 0 16px rgba(114,239,156,.16)!important;
+  }
+
+  /* Selected-location card is the main action surface. */
+  .detail{
+    margin-top:2px!important;
+    padding:10px!important;
+    font-size:12px!important;
+    line-height:1.55!important;
+    border-color:#344650!important;
+  }
   .detail h3{font-size:16px!important;margin-bottom:7px!important}
   .detail p{margin:6px 0!important}
   .detail .btnrow{margin-top:9px!important}
-  .detail .btnrow button,.detail button{min-height:48px!important;font-size:13px!important}
-  .mobileResourceGuide{margin:7px 0!important;padding:7px!important;gap:4px!important;font-size:10px!important}
-  .exploreRight{display:flex!important;flex-direction:column!important;gap:9px!important;margin-top:9px!important}
-  .exploreLogPanel{order:1;margin-top:0!important;padding-top:0!important;border-top:0!important;background:#0a1014;border:1px solid #2d3d45;padding:8px!important}
+  .detail .btnrow button,.detail button{
+    min-height:48px!important;
+    font-size:13px!important;
+  }
+  .mobileResourceGuide{
+    margin:7px 0!important;
+    padding:7px!important;
+    gap:4px!important;
+    font-size:10px!important;
+  }
+
+  /* Put the event log directly after the exploration area; raid forecast below it. */
+  .exploreRight{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:9px!important;
+    margin-top:9px!important;
+  }
+  .exploreLogPanel{
+    order:1;
+    margin-top:0!important;
+    padding-top:0!important;
+    border-top:0!important;
+    background:#0a1014;
+    border:1px solid #2d3d45;
+    padding:8px!important;
+  }
   .raidCard{order:2;margin-top:0!important}
-  .exploreLogHeader{align-items:center!important;margin-bottom:6px!important}
-  .exploreLogHeader h2{font-size:14px!important;margin:0!important}
-  .exploreLogHeader span{display:block;margin-top:1px;font-size:9px!important;line-height:1.25}
-  .logToggle{min-height:38px!important;padding:6px 8px!important;font-size:10px!important}
-  .log{height:230px!important;padding:5px 7px!important;font-size:11.5px!important;line-height:1.5!important;border-radius:4px!important}
+  .exploreLogHeader{
+    align-items:center!important;
+    margin-bottom:6px!important;
+  }
+  .exploreLogHeader h2{
+    font-size:14px!important;
+    margin:0!important;
+  }
+  .exploreLogHeader span{
+    display:block;
+    margin-top:1px;
+    font-size:9px!important;
+    line-height:1.25;
+  }
+  .logToggle{
+    min-height:38px!important;
+    padding:6px 8px!important;
+    font-size:10px!important;
+  }
+  .log{
+    height:230px!important;
+    padding:5px 7px!important;
+    font-size:11.5px!important;
+    line-height:1.5!important;
+    border-radius:4px!important;
+  }
   .log>div{padding:7px 2px!important;gap:7px!important}
   .logDay{min-width:32px;font-size:8.5px!important}
   .exploreLogPanel.expanded .log{height:min(55dvh,480px)!important}
 }
+
 @media (max-width:360px){
   .tile .nm{font-size:7.8px!important}
   .ico svg{width:min(23px,100%)!important;height:min(23px,100%)!important}
